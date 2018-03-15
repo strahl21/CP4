@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="">
+    <title>Find new words!</title>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+
+  <div id="container" class = "container">
+
+    <div class = "header">
+      <h1>Find new Words!</h1>
+    </div>
+
+    <div id="getWordOfTheDay" class = "getWord">
+      <input v-on:click="getRandomThesWord" id="getWordSubmit" class="button" type="submit" value="I know it - move on"></input>
+      <input v-on:click="addWords" id="getWordSubmit" class="button" type="submit" value="Save word to list"></input>
+      <input v-on:click="showMeDefinition" id="getWordSubmit" class="button" type="submit" value="See Definition"></input>
+    </div>
+
+    <div id="getWordResults" class = "getWordOutput">
+      <h2>Find words that you don't know!</h2>
+      <div id="wordDisplay" class = "getWord">
+        <div v-if="loading">
+  	       <p>Loading...</p>
+        </div>
+        <div v-show="noDefinition">
+          <p> No definitions found </p>
+          <p> Check to make sure word is spelled correctly or that it is in English </p>
+        </div>
+        <h2> Word: {{ currentWord }} </h2>
+        <h2>Definition: </h2>
+        <div v-show="definitionShow" v-for="definition in definitionDisplay">
+            <p>{{ definition }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class = "quiz">
+      <h2> See words you don't know!</h2>
+      <input v-on:click="showMeList" id="quizSubmit" class="button" type="submit" value="See words"></input>
+      <input v-on:click="deleteWords" id="quizSubmit" class="button" type="submit" value="Delete Words"></input>
+    </div>
+
+    <div v-show="showList" id="quizResults" class = "quizOutput">
+      <div v-for="word in previousWords">
+          <p>{{ word }}</p>
+      </div>
+    </div>
+
+    <div class = "footer">
+	    <p>Git hub url: https://github.com/strahl21/CP4</p>
+      <a href="https://github.com/strahl21/CP4/">Link To GitHub</a>
+    </div>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script text="type/javascript" src="/script.js">
+    </script>
+
+  </body>
+</html>
