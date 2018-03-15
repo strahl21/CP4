@@ -23,7 +23,7 @@ var app = new Vue({
   },
   methods: {
     getWords: function() {
-      axios.get("http://104.236.247.79:3000/api/words").then(response => {
+      axios.get("http://104.236.247.79:3001/api/words").then(response => {
   for (var i = 0; i < response.data.length; i++){
     if (i === response.data.length - 1) {
     this.previousWords.push(response.data[i].word);
@@ -34,7 +34,7 @@ var app = new Vue({
       });
     },
     addWords: function() {
-      axios.post("http://104.236.247.79:3000/api/words", {
+      axios.post("http://104.236.247.79:3001/api/words", {
 	word: this.currentWord,
 	definition: this.definitionDisplay
       }).then(response => {
@@ -46,9 +46,9 @@ var app = new Vue({
       });
     },
     deleteWords: function() {
-      axios.get("http://104.236.247.79:3000/api/words").then(response => {
+      axios.get("http://104.236.247.79:3001/api/words").then(response => {
   for (var i = 0; i < response.data.length; i++){
-      axios.delete("http://104.236.247.79:3000/api/words/" + response.data[i].id).then(response => {
+      axios.delete("http://104.236.247.79:3001/api/words/" + response.data[i].id).then(response => {
   this.getWords();
   return true;
       }).catch(err => {
